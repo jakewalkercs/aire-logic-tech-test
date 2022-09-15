@@ -5,14 +5,17 @@ def main():
     """Simple program base template"""
     print("hello world")
 
-def search_songs(test):
-    None
+def search_songs():
+    """Simple program base template"""
+    print("hello world")
 
 def search_lyrics():
-    None
+    """Simple program base template"""
+    print("hello world")
 
 def calculate_mean_lyrics():
-    None
+    """Simple program base template"""
+    print("hello world")
 
 if __name__ == '__main__':
     main()
