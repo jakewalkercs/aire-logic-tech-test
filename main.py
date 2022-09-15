@@ -5,7 +5,7 @@ def main():
     """Simple program base template"""
     print("hello world")
 
-def search_songs():
+def search_songs(test):
     None
 
 def search_lyrics():
