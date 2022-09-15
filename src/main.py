@@ -1,3 +1,5 @@
+"""Main file command contents"""
+
 import click
 
 @click.command()
