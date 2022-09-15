@@ -3,3 +3,5 @@
 /Airelogic_technical_test.egg-info/*
 /.pytest_cache/*
 pyvenv.cfg
+Pipfile
+Pipfile.locl
