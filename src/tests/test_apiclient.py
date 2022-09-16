@@ -1,6 +1,8 @@
 """Main test contents"""
 
-from src.apiclient import get_artist_mbid
+from apiclient import get_artist_mbid
+
+
 import logging
 
 
