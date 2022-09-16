@@ -7,10 +7,12 @@ from apiclient import get_artist_mbid
 @click.command()
 def main():
     """The main application"""
+    log_object = logging.getLogger("logs")
+
     try:
-        mmid = get_artist_mbid("drake")
+        mmid = get_artist_mbid(log_object, "drake")
     except BaseException as e:
-        return logging.error(e)
+        return log_object.error(e)
 
     print("hello world")
 
