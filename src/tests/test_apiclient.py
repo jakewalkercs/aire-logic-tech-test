@@ -1,6 +1,9 @@
 """Main test contents"""
 
-from src.apiclient import get_artist_mbid
+import sys
+sys.path.insert(0, '../src')
+from apiclient import get_artist_mbid
+
 
 def test_get_artist_mbid():
     """Simple test to ensure the API returns an artist"""
