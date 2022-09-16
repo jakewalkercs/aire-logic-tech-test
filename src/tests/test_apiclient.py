@@ -1,6 +1,6 @@
 """Main test contents"""
 
-# from src.apiclient import get_artist_mbid
+from src.apiclient import get_artist_mbid
 
 def test_get_artist_mbid():
     """Simple test to ensure the API returns an artist"""
