@@ -7,7 +7,9 @@ name = "pypi"
 
 [dev-packages]
 pytest = "*"
-requests = "*'
+requests = "*"
+click = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.9"
