@@ -2,7 +2,7 @@
 
 import click
 import logging
-from apiclient import get_artist_mbid
+from apiclient import get_artist_albums, get_artist_songs
 
 
 @click.command()
@@ -10,27 +10,33 @@ def main():
     """The main application"""
     log_object = logging.getLogger("logs")
 
+    artist_songs("Believe", "Cher", log_object)
+
+
+def artist_releases(artist, log_object):
     try:
-        mmid = get_artist_mbid(log_object, "drake")
+        response = get_artist_albums(log_object, artist)
     except BaseException as exception:
         return log_object.error(exception)
 
-    return
+    albums = []
+    for x in response['release-groups']:
+        if x['primary-type'] == 'Album' and not (x['title'] in albums):
+            albums.append(x['title'])
+    return albums
 
 
-def search_songs():
-    """Simple program base template"""
-    print("hello world")
+def artist_songs(album, artist, log_object):
+    try:
+        response = get_artist_songs(log_object, album, artist)
+    except BaseException as exception:
+        return log_object.error(exception)
 
+    songs = []
+    for x in response["album"]["tracks"]["track"]:
+        songs.append(x["name"])
 
-def search_lyrics():
-    """Simple program base template"""
-    print("hello world")
-
-
-def calculate_mean_lyrics():
-    """Simple program base template"""
-    print("hello world")
+    return songs
 
 
 if __name__ == '__main__':
