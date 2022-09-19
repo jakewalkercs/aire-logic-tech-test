@@ -14,6 +14,8 @@ def main():
     except BaseException as e:
         return log_object.error(e)
 
+    # TODO: Fix the git action and push code, cleanup readme.md
+
     print("hello world")
 
 def search_songs():
