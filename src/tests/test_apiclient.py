@@ -2,6 +2,7 @@
 import logging
 from apiclient import get_artist_mbid
 
+
 def test_get_artist_mbid_success():
     """Simple test to ensure the API returns an artist"""
     log_object = logging.getLogger("test_logs")

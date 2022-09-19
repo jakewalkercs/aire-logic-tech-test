@@ -4,6 +4,7 @@ import click
 import logging
 from apiclient import get_artist_mbid
 
+
 @click.command()
 def main():
     """The main application"""
@@ -11,10 +12,11 @@ def main():
 
     try:
         mmid = get_artist_mbid(log_object, "drake")
-    except BaseException as e:
-        return log_object.error(e)
+    except BaseException as exception:
+        return log_object.error(exception)
 
     return
+
 
 def search_songs():
     """Simple program base template"""
