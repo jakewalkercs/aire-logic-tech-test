@@ -3,3 +3,4 @@
 /Airelogic_technical_test.egg-info/*
 /.pytest_cache/*
 pyvenv.cfg
+**/__pycache__/
