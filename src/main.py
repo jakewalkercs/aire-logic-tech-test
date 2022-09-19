@@ -2,15 +2,13 @@
 
 import click
 import logging
-from apiclient import get_artist_albums, get_artist_songs
+from apiclient import get_artist_albums, get_artist_songs, get_artist_song_lyrics
 
 
 @click.command()
 def main():
     """The main application"""
     log_object = logging.getLogger("logs")
-
-    artist_songs("Believe", "Cher", log_object)
 
 
 def artist_releases(artist, log_object):
@@ -37,6 +35,15 @@ def artist_songs(album, artist, log_object):
         songs.append(x["name"])
 
     return songs
+
+
+def song_lyrics(artist, song, log_object):
+    try:
+        response = get_artist_song_lyrics(log_object, song, artist)
+    except BaseException as exception:
+        return log_object.error(exception)
+
+    return response['GetLyricResult']['Lyric']
 
 
 if __name__ == '__main__':
