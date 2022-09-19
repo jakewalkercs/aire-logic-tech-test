@@ -4,17 +4,17 @@ import requests
 import xmltodict
 
 
-def _get(log_object, uri, payload, retry=False, headers=None):
-    response = requests.get(uri, headers=headers, params=payload)
+def _get(log_object, uri, payload,headers=None, retry=False):
+    # log_object.info('Attempting API call to {}'.format(uri))
 
-    log_object.info('Attempting API call to {}'.format(uri))
+    response = requests.get(uri, headers=headers, params=payload)
 
     if retry or response.status_code == requests.codes.ok:
         return response
 
-    log_object.info(
-        'API call to {} returned error {}'.format(
-            uri, response.status_code))
+    # log_object.info(
+    #     'API call to {} returned error {}'.format(
+    #         uri, response.status_code))
     return _get(log_object, uri, payload, retry=True)
 
 
@@ -24,12 +24,12 @@ def get_artist_albums(log_object, artist):
 
     response = _get(log_object, uri, payload)
 
-    if response.status_code != requests.codes.ok:
-        raise requests.HTTPError(
-            'API call to {} returned error {}'.format(
-                uri, response.status_code))
+    # if response.status_code != requests.codes.ok:
+    #     raise requests.HTTPError(
+    #         'API call to {} returned error {}'.format(
+    #             uri, response.status_code))
 
-    log_object.info('Successfully returned artist albums')
+    # log_object.info('Successfully returned artist albums')
 
     return response.json()
 
@@ -49,12 +49,13 @@ def get_artist_songs(log_object, album, artist):
     }
 
     response = _get(log_object, uri, payload, headers=headers)
-    if response.status_code != requests.codes.ok:
-        raise requests.HTTPError(
-            'API call to {} returned error {}'.format(
-                uri, response.status_code))
 
-    log_object.info('Successfully returned artist songs')
+    # if response.status_code != requests.codes.ok:
+    #     raise requests.HTTPError(
+    #         'API call to {} returned error {}'.format(
+    #             uri, response.status_code))
+
+    # log_object.info('Successfully returned artist songs')
 
     return response.json()
 
@@ -74,7 +75,7 @@ def get_artist_song_lyrics(log_object, song, artist):
             'API call to {} returned error {}'.format(
                 uri, response.status_code))
 
-    log_object.info('Successfully returned artist songs')
+    # log_object.info('Successfully returned artist songs')
 
     xml_converted = xmltodict.parse(response.text)
 
