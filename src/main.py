@@ -15,6 +15,9 @@ def main(artist):
     """The main application"""
     logging.basicConfig(filename='logs.log', level=logging.DEBUG, force=True)
     log_object = logging.getLogger("logs.log")
+
+    log_object.info("Program Execution Start, artist: {}".format(artist))
+
     albums = artist_albums(log_object, artist)
 
     lyrics = []
@@ -27,7 +30,7 @@ def main(artist):
                 if isinstance(song_lyrics_item, str):
                     lyrics.append(song_lyrics_item)
 
-    print("\n\n")
+    print("\n")
 
     if lyrics:
         mean = (calculate_mean(log_object, lyrics))
@@ -40,11 +43,14 @@ def main(artist):
     else:
         print("No Lyrics found")
 
+    log_object.info("Program Execution End, artist: {}".format(artist))
+
+
 def artist_albums(log_object, artist):
     """Utilizes the API client to return the albums found by the artist"""
 
     try:
-        log_object.info("Attempting to fetch artist: %s album".format(artist))
+        log_object.info("Attempting to fetch artist: {} album".format(artist))
         response = get_artist_albums(log_object, artist)
     except BaseException as exception:
         log_object.error(exception)
@@ -54,10 +60,12 @@ def artist_albums(log_object, artist):
 
     for item in response['release-groups']:
         try:
-            if item['primary-type'] == 'Album' and not (item['title'] in albums):
+            if item['primary-type'] == 'Album' and not (
+                    item['title'] in albums):
                 albums.append(item['title'])
         except KeyError:
-            log_object.error("Key error when attempting to access artist: %s albums".format(artist))
+            log_object.error(
+                "Key error when attempting to access artist: {} albums".format(artist))
 
     return albums
 
@@ -66,7 +74,9 @@ def artist_songs(log_object, album, artist):
     """Utilizes the API client to return all songs from an artist's album"""
 
     try:
-        log_object.info("Attempting to fetch album: %s of artist: %s".format(album, artist))
+        log_object.info(
+            "Attempting to fetch album: {} of artist: {}".format(
+                album, artist))
         response = get_artist_songs(log_object, album, artist)
     except BaseException as exception:
         log_object.error(exception)
@@ -78,7 +88,9 @@ def artist_songs(log_object, album, artist):
         for x in response["album"]["tracks"]["track"]:
             songs.append(x["name"])
     except KeyError:
-            log_object.error("Key error when attempting to access album: %s of artist: %s".format(album, artist))
+        log_object.error(
+            "Key error when attempting to access album: {} of artist: {}".format(
+                album, artist))
 
     return songs
 
@@ -87,7 +99,9 @@ def song_lyrics(log_object, artist, song):
     """Utilizes the API client to return lyrics from an input song"""
 
     try:
-        log_object.info("Attempting to fetch lyrics from song: %s of artist: %s".format(song, artist))
+        log_object.info(
+            "Attempting to fetch lyrics from song: {} of artist: {}".format(
+                song, artist))
         response = get_artist_song_lyrics(log_object, song, artist)
     except BaseException as exception:
         log_object.error(exception)
