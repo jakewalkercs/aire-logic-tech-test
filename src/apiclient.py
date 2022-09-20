@@ -4,7 +4,7 @@ import requests
 import xmltodict
 
 
-def _get(log_object, uri, payload,headers=None, retry=False):
+def _get(log_object, uri, payload, headers=None, retry=False):
     """Simple API client to retry a get request once."""
 
     log_object.info('Attempting API call to {}'.format(uri))
@@ -31,7 +31,7 @@ def get_artist_albums(log_object, artist):
 
     if response.status_code != requests.codes.ok:
         log_object.error('API call to {} returned error {}'.format(
-                uri, response.status_code))
+            uri, response.status_code))
 
     log_object.info('Successfully returned artist albums')
 
@@ -59,7 +59,7 @@ def get_artist_songs(log_object, album, artist):
 
     if response.status_code != requests.codes.ok:
         log_object.error('API call to {} returned error {}'.format(
-                uri, response.status_code))
+            uri, response.status_code))
 
     log_object.info('Successfully returned artist songs')
 
@@ -81,7 +81,7 @@ def get_artist_song_lyrics(log_object, song, artist):
 
     if response.status_code != requests.codes.ok:
         log_object.error('API call to {} returned error {}'.format(
-                uri, response.status_code))
+            uri, response.status_code))
 
     log_object.info('Successfully returned artist songs')
 
