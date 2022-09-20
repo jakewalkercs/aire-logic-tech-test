@@ -29,10 +29,9 @@ def get_artist_albums(log_object, artist):
 
     response = _get(log_object, uri, payload)
 
-    # if response.status_code != requests.codes.ok:
-    #     raise requests.HTTPError(
-    #         'API call to {} returned error {}'.format(
-    #             uri, response.status_code))
+    if response.status_code != requests.codes.ok:
+        log_object.error('API call to {} returned error {}'.format(
+                uri, response.status_code))
 
     log_object.info('Successfully returned artist albums')
 
@@ -58,10 +57,9 @@ def get_artist_songs(log_object, album, artist):
 
     response = _get(log_object, uri, payload, headers=headers)
 
-    # if response.status_code != requests.codes.ok:
-    #     raise requests.HTTPError(
-    #         'API call to {} returned error {}'.format(
-    #             uri, response.status_code))
+    if response.status_code != requests.codes.ok:
+        log_object.error('API call to {} returned error {}'.format(
+                uri, response.status_code))
 
     log_object.info('Successfully returned artist songs')
 
@@ -81,10 +79,9 @@ def get_artist_song_lyrics(log_object, song, artist):
 
     response = _get(log_object, uri, payload)
 
-    # if response.status_code != requests.codes.ok:
-    #     raise requests.HTTPError(
-    #         'API call to {} returned error {}'.format(
-    #             uri, response.status_code))
+    if response.status_code != requests.codes.ok:
+        log_object.error('API call to {} returned error {}'.format(
+                uri, response.status_code))
 
     log_object.info('Successfully returned artist songs')
 
