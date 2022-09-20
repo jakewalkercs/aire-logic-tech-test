@@ -4,3 +4,4 @@
 /.pytest_cache/*
 pyvenv.cfg
 **/__pycache__/
+**/logs.log

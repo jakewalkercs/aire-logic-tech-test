@@ -1,17 +1,20 @@
 # altechnicaltest
 
+![airelogiclogo](logo.png)
+
 ## Prerequisites
 
 * Python 3
+* Clone this repo
 
 ## Getting Started
 
-* Create and activate a new virtual environment:
+* Install dependencies:
+  $ pip install pipenv
+  $ pipenv install
 
-  $ python3 -m venv venv
-  $ . venv/bin/activate
-* Install dependencies::
+* Activate virtual environment:
+  $ pipenv shell
 
-  $ pip install -e .
 * Start the app:
-  $ python main.py
+  $ python src/main.py
