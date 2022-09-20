@@ -4,17 +4,17 @@
 
 ## Prerequisites
 
-* Python 3
-* Clone this repo
+* Python 3 <br />
+* Clone this repo <br />
 
 ## Getting Started
 
-* Install dependencies:
-  $ pip install pipenv
-  $ pipenv install
+* Install dependencies: <br />
+  $ pip install pipenv <br />
+  $ pipenv install <br />
 
-* Activate virtual environment:
-  $ pipenv shell
+* Activate virtual environment: <br />
+  $ pipenv shell <br />
 
-* Start the app:
-  $ python src/main.py
+* Start the app: <br />
+  $ python src/main.py <br />
